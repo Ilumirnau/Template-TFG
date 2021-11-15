@@ -1,0 +1,206 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+%----------FONT AND GEOMETRY DEFINITION----------%
+\usepackage[a4paper, hmargin=3.0cm, vmargin=3.0cm]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault} %setting arial font (fake arial, no one will notice)
+\usepackage{setspace}
+\onehalfspacing %\setstretch{1.5} fa el mateix, però es pot canviar el decimal al que es vulgui
+\usepackage[english]{babel}
+\usepackage{fullpage}
+\usepackage{afterpage}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{array}
+%\usepackage{wrapfig}
+%\usepackage{multirow}
+%\usepackage{tabularx}
+%\usepackage{multicol}
+\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage{float}
+
+%----------BIBLIOGRAPHY----------%
+%cal tenir un fitxer d'extensió .bib (els fa Mendeley) anomenat biblio a la carpeta on es compili
+\usepackage[backend=biber, style = chem-acs]{biblatex}
+\usepackage{csquotes}
+\addbibresource{biblio.bib}
+
+%----------TITLE AND PAGE FORMATTING----------%
+\newcommand\NomComplet{Manel Bayon Jimenez}
+\newcommand\NIU{9999999}
+\newcommand\NomProfeA{Manel Bayon Jimenez}
+\newcommand\NomProfeB{Manel Bayon Jimenez}
+\newcommand\CodiTFG{TFG2122\_xxx}
+\newcommand\TitolTFG{El meu TFG té tal títol}
+\newcommand\NomCentre{Departament de Química } %cal posar un espai al final
+\newcommand\NomGrau{Química}
+\newcommand\Mes{Juny } %cal espai al final
+\newcommand\Any{2022}
+
+\fancypagestyle{sumari}{
+\fancyhf{}
+\rhead{\TitolTFG}
+\renewcommand{\headrulewidth}{0pt}%
+\renewcommand{\footrulewidth}{0pt}%
+}
+
+\fancypagestyle{afteres}{
+\fancyhf{}
+\headheight 0 cm
+\headsep 1.725cm
+\rhead{\TitolTFG}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}%
+\renewcommand{\footrulewidth}{0pt}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\headheight 0 cm
+\headsep 1.725cm
+\rhead{\TitolTFG}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}%
+\renewcommand{\footrulewidth}{0pt}%
+
+%----------ABBREVIATIONS LIST----------%
+\usepackage{glossaries}
+\usepackage{glossary-longragged}
+
+\makenoidxglossaries
+
+\newacronym{bams}{BAMS}{bar-assisted meniscus shearing}
+\newacronym{ofet}{OFET}{organic field-effect transistor}
+\newacronym{osc}{OSC}{organic semiconductor}
+\newacronym{sam}{SAM}{self-assembled monolayer}
+
+\glsaddall[types=\acronymtype] % to add all the acronyms, cited or not in the text
+
+
+%----------DOCUMENT COMPILATION----------%
+\begin{document}
+\newgeometry{bottom = 1cm}
+\begin{titlepage}
+
+\center % Center everything on the page
+
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics[width = 6.1cm]{nom_uab.jpg}\\[1.76cm] % Include a department/university logo - this will require the graphicx package
+
+% TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\textbf{\LARGE Facultat de Ciències}\\[3.53cm] % Major heading such as course name
+%\rule{.1pt}{5cm}
+\begin{flushright}
+\begin{tabular}{r | p{.5\textwidth}}
+  {\Large Treball de} & {\LARGE \CodiTFG}\\
+  {\LARGE fi de grau}  & {\LARGE \TitolTFG}
+\end{tabular}
+\end{flushright}\vspace{7.06cm}
+
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+\begin{tabular}{p{.48\textwidth} p{.48\textwidth}}
+\large
+Direcció: & Alumne: \\
+\NomProfeA & \NomComplet\\
+\NomProfeB & NIU: \\
+ & \NIU
+\end{tabular}
+\vspace{0.7cm}
+
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \Mes \Any}\\[1.4cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+Treball de fi de grau realitzat al \NomCentre i presentat a la\\ Facultat de Ciències\\ de la Universitat Autònoma de Barcelona per a l'obtenció del Grau en \NomGrau
+
+%\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+\restoregeometry
+\pagenumbering{roman}
+%\afterpage{\aftergroup\restoregeometry}
+\thispagestyle{empty}
+{\centering \textcolor{white}{This page is left blank intentionally}}
+\setcounter{page}{0}
+\newpage
+
+\thispagestyle{afteres}
+\section*{Resum analític}
+
+blabla
+
+\newpage
+
+\section*{Resumen Analítico}
+
+blebleble
+
+\newpage
+
+\section*{Analytical abstract}
+
+bliblibli
+
+\newpage
+\thispagestyle{sumari}
+%\rhead{\TitolTFG}
+\tableofcontents{}
+
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\rhead{\TitolTFG}
+\section{List of abbreviations}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+\printnoidxglossary[type=main, title={\vspace{-1cm}}, nonumberlist, nogroupskip, style=super]%nonumberlist deletes the list of links in the index to every acronym listed. nogroupskip deletes the extra space between letter groups
+\newpage
+
+\section{Introduction}
+The technique \gls{bams} will be used in this thesis. The \gls{bams} is commonly known for...
+\newpage
+
+\section{Objectives}
+
+\newpage
+
+\section{Methodology}
+\Gls{bams}
+\newpage
+
+\section{Results and Discussion}
+
+\newpage
+
+\section{Conclusions}
+If we get some ideas from a paper but we're not citing it explicitly we can use the command $\backslash$nocite and it will be added in the bibliography in the desired order\nocite{Lamport2018}. %article example
+
+Another example of an article citation is provided here\autocite{Foster2019} . %article example with explicit citation in the document body
+
+Check the .bib file to see how a PhD thesis is properly formatted. As an example, Temiños thesis is cited here\autocite{TeminoGutierrez2019} .
+
+A review cited is also a good example of the documents that might need to be cited during a thesis\autocite{Bronstein2020} .
+\newpage
+
+\section{Bibliography}
+
+
+\printbibliography[title = { \vspace{-1cm}}]
+\end{document}
