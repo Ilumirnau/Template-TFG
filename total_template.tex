@@ -14,6 +14,14 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,
+  linkcolor=black,
+  linkbordercolor={1.0 1.0 1.0},
+  breaklinks = true,
+  citebordercolor={1.0 1.0 1.0},
+  hidelinks = true,
+}
 \usepackage{xurl}
 \usepackage{array}
 %\usepackage{wrapfig}
@@ -28,6 +36,23 @@
 %cal tenir un fitxer d'extensió .bib (els fa Mendeley) anomenat biblio a la carpeta on es compili
 \usepackage[backend=biber, style = chem-acs]{biblatex}
 \usepackage{csquotes}
+%en cas d'escriure la tesi en català o catellà:
+%\usepackage[autostyle=false, style=spanish]{csquotes}
+
+% es pot mirar els tipus de documents en el fitxer .bib que biblatex podrà editar a: https://mirror.las.iastate.edu/tex-archive/macros/latex/contrib/biblatex-contrib/biblatex-chem/chem-acs.bbx
+
+%---màxim de noms a la bibliografia
+\ExecuteBibliographyOptions{maxnames=10}
+%----
+%-----Per fer que l'issue en articles surti entre parèntesi després del volum
+\DeclareFieldFormat[article]{issue}{\mkbibparens{#1}}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit{\space}%
+  \printfield{issue}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+%---------------------------------------------------------
 \addbibresource{biblio.bib}
 
 %----------TITLE AND PAGE FORMATTING----------%
